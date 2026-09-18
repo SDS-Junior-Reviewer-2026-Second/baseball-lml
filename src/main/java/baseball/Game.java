@@ -9,7 +9,15 @@ public class Game {
         if(guessNumber.equals(question)){
             return new GuessResult(true, 3, 0);
         }
-        else return new GuessResult(false, 0, 0);
+        else{
+            int strikes = 0;
+            for(int i = 0 ; i<question.length();i++ ){
+                if(question.indexOf(guessNumber.charAt(i)) == i){
+                    strikes++;
+                }
+            }
+            return new GuessResult(false, strikes, 0);
+        }
     }
 
     private void assertIllegalArgument(String guessNumber) {

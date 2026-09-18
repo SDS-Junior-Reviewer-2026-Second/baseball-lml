@@ -65,6 +65,12 @@ public class GameTest {
 		assertThat(result.getBalls()).isEqualTo(balls);
 	}
 
+	@Test
+	public void returnUnSolvedResultIfSomeMatchedNumber(){
+		generateQuestion("123");
+		assertMatchedNumber(game.guess("120"), false, 2, 0);
+	}
+
 	/*@Test
 	public void 입력값이_없을_경우() {
 	}
