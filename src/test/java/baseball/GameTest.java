@@ -1,16 +1,47 @@
 package baseball;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GameTest {
 
+	private Game game;
+
+	@BeforeEach
+	void setup(){
+		game = new Game();
+	}
+
 	@Test
+	void createGame(){
+		assertNotNull(game);
+	}
+
+	private void assertIllegalArgument(String guessNumber) {
+		try{
+
+			game.guess(guessNumber);
+			fail();
+		} catch(IllegalArgumentException e){
+
+		}
+	}
+
+	@Test
+	public void throwIllegalArgumentExceptionInvalidImnput(){
+		assertIllegalArgument(null);
+		assertIllegalArgument("12");
+		assertIllegalArgument("1234");
+		assertIllegalArgument("12s");
+	}
+
+	/*@Test
 	public void 입력값이_없을_경우() {
 	}
 	
 	@Test
-	public void 입력값_자리수가_세자리가_아닐�경우() {
+	public void 입력값_자리수가_세자리가_아닐_경우() {
 
 	}
 	
@@ -47,5 +78,5 @@ public class GameTest {
 	@Test
 	public void 볼과_스트라이크가_함께_있을_경우_1_strike_1_ball() {
 
-	}
+	}*/
 }
